@@ -1,0 +1,10 @@
+.home {
+    position: relative;
+    top: 3em;
+    left: 12em;
+}
+
+.hello-user {
+    font-size: 2em;
+    font-weight: 500;
+}
