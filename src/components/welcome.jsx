@@ -1,7 +1,5 @@
-import React from 'react';
 
-
-const Welcome = ({datas}) => {
+function Welcome({datas}) {
     return (
         <div className='welcome-user'>
             <h1>Bonjour {datas.user?.userInfos.firstName}</h1>

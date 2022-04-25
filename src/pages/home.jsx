@@ -3,6 +3,8 @@ import React, { useEffect, useState } from 'react';
 import { apiFetch, newUserData } from '../services/fetch';
 import { USER_ACTIVITY, USER_AVERAGE_SESSIONS, USER_MAIN_DATA, USER_PERFORMANCE } from '../services/data.js'
 import Welcome from "../components/welcome";
+import IntakeCount from "../components/graph/intakeCount";
+import RadarGraph from "../components/graph/radar";
 
 const Dashboard = () => {
     const [datas, setDatas] = useState({});
@@ -29,6 +31,8 @@ const Dashboard = () => {
         <div className="profile-page">
             <Welcome datas={datas}/>
             <div className="graph">
+                <IntakeCount datas={datas}/>
+                <RadarGraph datas={datas}/>
             </div> 
         </div>
     );
