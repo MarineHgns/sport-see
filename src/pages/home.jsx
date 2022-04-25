@@ -2,6 +2,7 @@ import "../css/home.css"
 import React, { useEffect, useState } from 'react';
 import { apiFetch, newUserData } from '../services/fetch';
 import { USER_ACTIVITY, USER_AVERAGE_SESSIONS, USER_MAIN_DATA, USER_PERFORMANCE } from '../services/data.js'
+import Welcome from "../components/welcome";
 
 const Dashboard = () => {
     const [datas, setDatas] = useState({});
@@ -12,9 +13,8 @@ const Dashboard = () => {
 
         async function fetchData() {
             await apiFetch(userId);
-            console.log(newUserData , 'newUserData');
+
             if (!newUserData.user) {
-                console.log(newUserDataMock , 'newUserData2');
                 setDatas(() => ({...newUserDataMock}))
             } else {
                 setDatas(() => ({...newUserData}))
@@ -27,8 +27,8 @@ const Dashboard = () => {
 
     return (
         <div className="profile-page">
+            <Welcome datas={datas}/>
             <div className="graph">
-                yooooooooo
             </div> 
         </div>
     );

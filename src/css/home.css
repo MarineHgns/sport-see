@@ -1,10 +1,10 @@
-.home {
+.profile-page{
     position: relative;
     top: 3em;
     left: 12em;
 }
 
-.hello-user {
+.welcome-user{
     font-size: 2em;
     font-weight: 500;
 }
