@@ -4,8 +4,12 @@ import Header from "./components/header";
 import Error from "./pages/error";
 import Navbar from "./components/navbar"
 import "../src/css/app.css"
+import { useEffect, useState } from "react";
+import Dashboard from "./pages/dashboard"
+
 
 function App() {
+
   return (
       <div className="App">
        <Header />
@@ -13,6 +17,7 @@ function App() {
         
           <Routes>
             <Route exact path="/" element={<Home />}/>
+            <Route path="/user/:id" element={<Dashboard />} />
             <Route path="/*" element={<Error />}/>
           </Routes>
 

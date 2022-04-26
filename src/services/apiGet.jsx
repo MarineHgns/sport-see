@@ -3,6 +3,7 @@ import axios from 'axios';
 export let newUserData = {}
 
 export const apiFetch = async (userid) => {
+    console.log(userid);
     const main = axios.get(`http://localhost:3000/user/${userid}`)
     const activity = axios.get(`http://localhost:3000/user/${userid}/activity`)
     const averageSessions = axios.get(`http://localhost:3000/user/${userid}/average-sessions`)
