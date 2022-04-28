@@ -1,57 +1,47 @@
-import React, { PureComponent } from 'react';
-import { Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, ResponsiveContainer } from 'recharts';
+import {
+  PolarAngleAxis,
+  PolarGrid,
+  Radar,
+  RadarChart
+} from "recharts";
+import "../../css/graph.css"
+import React, { useEffect, useState } from "react";
 
-const datas = [
-  {
-    subject: 'Math',
-    A: 120,
-    B: 110,
-    fullMark: 150,
-  },
-  {
-    subject: 'Chinese',
-    A: 98,
-    B: 130,
-    fullMark: 150,
-  },
-  {
-    subject: 'English',
-    A: 86,
-    B: 130,
-    fullMark: 150,
-  },
-  {
-    subject: 'Geography',
-    A: 99,
-    B: 100,
-    fullMark: 150,
-  },
-  {
-    subject: 'Physics',
-    A: 85,
-    B: 90,
-    fullMark: 150,
-  },
-  {
-    subject: 'History',
-    A: 65,
-    B: 85,
-    fullMark: 150,
-  },
+function RadarChartPerf({ datas }) {
+  const categories = [
+    "Cardio" , "Energie" , "Endurance" , "Force" , "Vitesse" , "Intensité"
 ];
 
-function RadarGraph(){
- 
-    return (
-      <ResponsiveContainer width="100%" height="100%">
-        <RadarChart cx="50%" cy="50%" outerRadius="80%" data={datas}>
-          <PolarGrid />
-          <PolarAngleAxis dataKey="subject" />
-          <PolarRadiusAxis />
-          <Radar name="Mike" dataKey="A" stroke="#8884d8" fill="#8884d8" fillOpacity={0.6} />
-        </RadarChart>
-      </ResponsiveContainer>
-    );
+const [sessionPerf, setSessionPerf] = useState([]);
+useEffect(() => {
+  if (datas.performance?.data.length >= 1)  {
+    setSessionPerf(datas.performance?.data);
   }
+}, [datas]);
 
-export default RadarGraph
+
+  const data = sessionPerf.map((item) => {
+    return {
+      value: item.value,
+      kind: categories[item.kind - 1],
+    };
+  });
+
+  return (
+    <div className="radar">
+      <RadarChart
+        cx="50%" cy="50%" outerRadius="70%"  width={270} height={270} data={data} className="radarChart" 
+      >
+        <PolarGrid  polarRadius={[10,21,45,65,90]} radialLines={false}/>
+        <PolarAngleAxis dataKey="kind" tick={{fontWeight: "500", fontSize: "0.7em"}} stroke="white" axisLine={false} tickLine={false}/>
+        <Radar
+          dataKey="value" stroke="rgba(255, 1, 1, 0.7)" fill="rgba(255, 1, 1, 0.7)"
+        />
+      </RadarChart>
+    </div>
+  );
+};
+
+export default RadarChartPerf;
+// margin={{top: 15, bottom: 15, left: 15, right: 15}} 
+// , transform: 'translate(-6, -12)'

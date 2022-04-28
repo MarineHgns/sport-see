@@ -1,7 +1,7 @@
 .box-icon {
     background: rgba(251, 251, 251, 1);
     padding: 1em;
-    max-width: 15%;
+    width: 9.4em;
     border-radius: 5px;
     display: flex;
     align-items: flex-end;

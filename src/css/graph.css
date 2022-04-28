@@ -1,0 +1,45 @@
+.radarChart {
+    background-color: #282D30;
+    border-radius: 5px;
+}
+
+.black {
+    color: black;
+}
+
+.red {
+    color: #E60000;
+}
+
+.text-activity { 
+color: #74798C;
+font-size: 1em;
+}
+
+.width-li {
+    font-size: 2em;
+    padding-right: 0.3em;
+}
+
+li {
+    list-style-type: none ;
+    display: flex;
+    align-items: center;
+    padding-right: 1em;
+    padding-left: 1.4em;
+}
+
+.activity-chart-title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.act-title {
+    display: flex;
+    align-items: center;
+}
+
+.activity-chart-title-two ul {
+    display: flex;
+}
