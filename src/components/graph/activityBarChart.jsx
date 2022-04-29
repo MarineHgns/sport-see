@@ -1,8 +1,9 @@
 
-import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend} from 'recharts';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip} from 'recharts';
 import "../../css/graph.css"
 import React, { useEffect, useState } from "react";
-  
+import "../../css/activityBarChart.css"
+
 function ActivityBarChart ({datas}) {
   const [activityData, setActivityData] = useState([]);
   useEffect(() => {
@@ -10,8 +11,7 @@ function ActivityBarChart ({datas}) {
       setActivityData(datas.activity?.sessions);
     }
   }, [datas]);
-  
-  console.log(activityData);
+
     const data = activityData.map((item, index) => {
       return {
           day: index +1,
@@ -19,7 +19,20 @@ function ActivityBarChart ({datas}) {
           cal: item.calories
       };
     });
+
+  const CustomTooltip = ({ active, payload }) => {
+    if (active && payload ) {
+      return (
+        <div className="custom-tooltip">
+          <p className="value">{`${payload[0].value}kg`}</p>
+          <p className="value">{`${payload[1].value}kcal`}</p>
+        </div>
+      );
+    }
   
+    return null;
+  };
+
     return (
       <div className="activity-chart">
           <div className="activity-chart-title">
@@ -35,24 +48,46 @@ function ActivityBarChart ({datas}) {
                 </div>
               </div>
           </div>
-         <BarChart width={500} height={300} data={data} 
-            margin={{
-                top: 5,
-                right: 30,
-                left: 20,
-                bottom: 5,
-          }}
-        >
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="day" />
-          <YAxis  orientation='right' domain={[0,100]}/>
-          <Tooltip />
-          <Bar dataKey="kg" fill="#282D30" radius={[50, 50, 0, 0]} />
-          <Bar dataKey="cal" fill="#E60000" radius={[50, 50, 0, 0]} />
+
+         <BarChart width={600} height={300} data={data} barCategoryGap={20} barGap={7} margin={{
+              top: 50,
+              right: 10,
+              left: 40,
+              bottom: 5,
+            }}>
+          <CartesianGrid strokeDasharray="3 3" vertical={false}/>
+          <XAxis dataKey="day"  tickLine={false} tick={{ fontSize: 14 }} dy={10}/>
+          <YAxis orientation="right" interval="number" allowDecimals={false} tickLine={false} 
+            axisLine={false} tick={{ fontSize: 14 }}/>
+          <YAxis dataKey="cal" hide={true} />
+          <Tooltip content={<CustomTooltip />} cursor={{ fill: "#e0e0e0", opacity:"0.7" }}/>
+          <Bar dataKey="kg" fill="#282D30" radius={[50, 50, 0, 0]} barSize={6}  />
+          <Bar dataKey="cal" fill="#E60000" radius={[50, 50, 0, 0]} barSize={6}  />
         </BarChart>
+
       </div>
     );
   };
+
+
+
   
   export default ActivityBarChart;
-  
+
+  // let kilogramsArray = [];
+  // let caloriesArray = [];
+  // let minYKilo = 0;
+  // let maxYKilo = 0;
+  // let minYCal = 0;
+  // let maxYCal = 0;
+
+
+// domain={[minYKilo, maxYKilo]}
+// domain={[minYCal, maxYCal]}     
+// kilogramsArray = data.map((elt) => elt.kg);
+//     minYKilo = Math.min(...kilogramsArray) - 1;
+//     maxYKilo = Math.max(...kilogramsArray) + 1;
+
+//     caloriesArray = data.map((elt) => elt.cal);
+//     minYCal = Math.min(...caloriesArray) - 10;
+//     maxYCal = Math.max(...caloriesArray) + 10;

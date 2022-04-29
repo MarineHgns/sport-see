@@ -1,12 +1,14 @@
 import "../css/home.css"
 import React, { useEffect, useState } from 'react';
-import { apiFetch, newUserData } from '../services/apiGet';
+import { apiCall, apiFetch, newUserData } from '../services/apiGet';
 import { USER_ACTIVITY, USER_AVERAGE_SESSIONS, USER_MAIN_DATA, USER_PERFORMANCE } from '../services/data.js'
 import Welcome from "../components/welcome";
 import IntakeCount from "../components/graph/intakeCount";
 import RadarGraph from "../components/graph/radar";
 import { useParams, Navigate} from "react-router-dom";
 import ActivityBarChart from "../components/graph/activityBarChart";
+import PieChartScore from "../components/graph/pieChartScore";
+import SessionsLineChart from "../components/graph/lineChartSessions";
 
 function Dashboard() {
     const { id } = useParams()
@@ -23,8 +25,8 @@ function Dashboard() {
             newUserDataMock = { user : USER_MAIN_DATA[1], activity: USER_ACTIVITY[1], session: USER_AVERAGE_SESSIONS[1], performance: USER_PERFORMANCE[1] };
         }
 
-        async function fetchData() {
-            await apiFetch(userId);
+        async function getData() {
+            await apiCall(userId);
             setDatas(() => ({...newUserData}))
             
             if (!newUserData.user || newUserData == null || newUserData === undefined || newUserData.length === 0) {
@@ -38,7 +40,7 @@ function Dashboard() {
             }
         }
     
-        fetchData();
+        getData();
     },[userId] );
 
 if (noDatas === true) {
@@ -53,6 +55,8 @@ if (noDatas === true) {
                 <IntakeCount datas={datas}/>
                 <RadarGraph datas={datas}/>
                 <ActivityBarChart datas={datas}/>
+                <PieChartScore datas={datas}/>
+                <SessionsLineChart datas={datas}/>
             </div> 
         </div>
     );

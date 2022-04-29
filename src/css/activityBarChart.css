@@ -1,0 +1,17 @@
+.custom-tooltip {
+  background: #e60000;
+  padding: 0 10px;
+  box-shadow: 0px 0px 4px rgb(0, 0, 0); 
+}
+
+
+.value {
+   display: block;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 500;
+  font-family: Roboto;
+  text-align: center;
+  padding: 10px 0;   
+}
+

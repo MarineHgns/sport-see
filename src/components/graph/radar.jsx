@@ -30,10 +30,10 @@ useEffect(() => {
   return (
     <div className="radar">
       <RadarChart
-        cx="50%" cy="50%" outerRadius="70%"  width={270} height={270} data={data} className="radarChart" 
+        cx="50%" cy="50%" outerRadius="68%"  width={290} height={290} data={data} className="radarChart"  
       >
         <PolarGrid  polarRadius={[10,21,45,65,90]} radialLines={false}/>
-        <PolarAngleAxis dataKey="kind" tick={{fontWeight: "500", fontSize: "0.7em"}} stroke="white" axisLine={false} tickLine={false}/>
+        <PolarAngleAxis dataKey="kind" tick={{fontWeight: "500", fontSize: "0.7em", transform: 'translate(-3, 3)'}} stroke="white" axisLine={false} tickLine={false}/>
         <Radar
           dataKey="value" stroke="rgba(255, 1, 1, 0.7)" fill="rgba(255, 1, 1, 0.7)"
         />
@@ -43,5 +43,3 @@ useEffect(() => {
 };
 
 export default RadarChartPerf;
-// margin={{top: 15, bottom: 15, left: 15, right: 15}} 
-// , transform: 'translate(-6, -12)'
