@@ -3,7 +3,12 @@ import iconCarb from '../../assets/carbs-icon.svg'
 import iconFat from '../../assets/fat-icon.svg'
 import iconProt from '../../assets/protein-icon.svg'
 import "../../css/intakeCount.css"
+import PropTypes from "prop-types"
 
+/**
+ * Function that return 4 boxes with icons and nutritional informations (cal, protein, lipid and carb).
+ * @returns the IntakeCount component.
+ */
 function IntakeCount({datas}) {
     return (
         <div className='intake-box'>
@@ -40,6 +45,16 @@ function IntakeCount({datas}) {
 };
 
 export default IntakeCount
-
+IntakeCount.propTypes = {
+    datas: PropTypes.shape({
+      user: PropTypes.shape({
+        keyData: PropTypes.any.isRequired,
+        calorieCount: PropTypes.number,
+        proteinCount: PropTypes.number,
+        carbohydrateCount: PropTypes.number,
+        lipidCount: PropTypes.number
+      })
+    })
+  }
 
 

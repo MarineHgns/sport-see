@@ -1,3 +1,8 @@
+import PropTypes from "prop-types"
+/**
+ * Display a personalized welcome message with the first name of the user.
+ * @returns a div.
+ */
 
 function Welcome({datas}) {
     return (
@@ -9,3 +14,13 @@ function Welcome({datas}) {
 };
 
 export default Welcome;
+
+Welcome.propTypes = {
+    datas: PropTypes.shape({
+        user: PropTypes.shape({
+            userInfos: PropTypes.shape({
+                firstName: PropTypes.string.isRequired
+            })
+        })
+    })
+}

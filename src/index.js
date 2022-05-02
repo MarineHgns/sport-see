@@ -4,9 +4,11 @@ import App from "./App";
 import { createRoot } from "react-dom/client";
 import reportWebVitals from "./reportWebVitals";
 
+/* This is the code that is used to render the app to the DOM. */
 const rootElement = document.getElementById("root");
 const root = createRoot(rootElement);
 
+/* Rendering the app to the DOM. */
 root.render(
   <BrowserRouter>
     <App />

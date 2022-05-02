@@ -1,7 +1,13 @@
 import { LineChart, Line, XAxis, YAxis, Tooltip, Rectangle } from 'recharts';
 import React, { useEffect, useState} from "react";
 import "../../css/lineChartSessions.css"
+import PropTypes from "prop-types"
 
+/**
+ * Using a useEffect hook to set the state of averageTime to the data to display in the
+ * LineChart.
+ * @returns The LineChart component.
+ */
 function SessionsLineChart ({datas}) {
     const initialDayWeek = ["L", "M", "M", "J", "V", "S", "D"];
     const [averageTime, setAverageTime] = useState([]);
@@ -19,6 +25,10 @@ function SessionsLineChart ({datas}) {
       };
     });
 
+  /**
+   * Function that customizes the tooltip component with the sessionlength value.
+   */
+
   function CustomTooltip({ active, payload }){
     if (active && payload) {
       return (
@@ -28,6 +38,10 @@ function SessionsLineChart ({datas}) {
       );
     }
   };
+
+  /**
+   * Function that customizes the cursor background component.
+   */
 
   function CustomCursor(props) {
     if (props) {
@@ -51,7 +65,7 @@ function SessionsLineChart ({datas}) {
         <div className='line-chart-section'>
           <h2 className='title-line-chart'>Durée moyenne des sessions</h2>
 
-          <LineChart width={260} height={200} data={data} 
+          <LineChart width={260} height={189} data={data} 
             margin={{
               top: -55,
               right: 5,
@@ -78,3 +92,13 @@ function SessionsLineChart ({datas}) {
 
   
   export default SessionsLineChart;
+
+  SessionsLineChart.propTypes = {
+    datas: PropTypes.shape({
+      session: PropTypes.shape({
+        sessions: PropTypes.any.isRequired,
+        initialDayWeek: PropTypes.string,
+        sessionLength: PropTypes.number
+      })
+    })
+  }

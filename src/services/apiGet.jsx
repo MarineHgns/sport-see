@@ -2,8 +2,18 @@ import axios from 'axios';
 
 export let newUserData = {}
 
+/**
+ *  Function that makes 4 API calls and stores the data in an object called newUserData :
+ *   main API call -> user data
+ *   activity API call -> activity data
+ *   sessions API call -> sessions data
+ *   performance API call -> performance data
+ * 
+ *  newUserData = {[user, activity, sessions, performance]};
+ * 
+ */
+
 export const apiCall = async (userid) => {
-    console.log(userid);
     const main = axios.get(`http://localhost:3000/user/${userid}`)
     const activity = axios.get(`http://localhost:3000/user/${userid}/activity`)
     const sessions = axios.get(`http://localhost:3000/user/${userid}/average-sessions`)
@@ -18,4 +28,4 @@ export const apiCall = async (userid) => {
     })).catch(errors=>{
         console.log("Fetch error:", errors);
     })
-    }  
+}  

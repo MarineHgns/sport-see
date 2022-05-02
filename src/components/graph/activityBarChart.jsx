@@ -1,7 +1,13 @@
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip} from 'recharts';
 import React, { useEffect, useState } from "react";
 import "../../css/activityBarChart.css"
+import PropTypes from "prop-types"
 
+/**
+ * Using a useEffect hook to set the state of activityData to the data to display in the
+ * BarChart.
+ * @returns The BarChart component.
+ */
 function ActivityBarChart ({datas}) {
   const [activityData, setActivityData] = useState([]);
   
@@ -19,6 +25,10 @@ function ActivityBarChart ({datas}) {
       };
     });
 
+  /**
+   * Function that customizes the tooltip component with the kg and cal value.
+   */
+  
   function CustomTooltip({ active, payload }) {
     if (active && payload ) {
       return (
@@ -52,6 +62,7 @@ function ActivityBarChart ({datas}) {
               left: 40,
               bottom: 5,
             }}>
+              
           <CartesianGrid strokeDasharray="2 2" vertical={false}/>
           <XAxis dataKey="day"  tickLine={false} tick={{ fontSize: 14, fontWeight: 500 }} dy={10}/>
           <YAxis yAxisId={"kg"} dataKey="kg" domain={["dataMin - 2", "dataMax + 2"]} tick={{ fontWeight: "500", fontSize: "14px" }} tickMargin={40} tickLine={false} orientation="right" axisLine={false}/>
@@ -66,3 +77,14 @@ function ActivityBarChart ({datas}) {
   };
  
   export default ActivityBarChart;
+
+  ActivityBarChart.propTypes = {
+    datas: PropTypes.shape({
+      activity: PropTypes.shape({
+        sessions: PropTypes.any.isRequired,
+          day: PropTypes.string,
+          kg: PropTypes.number,
+          cal: PropTypes.number,
+      })
+    })
+  }

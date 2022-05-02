@@ -1,6 +1,11 @@
 import { Link } from "react-router-dom"
 import "../css/error.css"
 
+/**
+ * The Error function return the error page content and a Link to the home page.
+ * @returns the error page content.
+**/
+
 function Error() {
     return (
         <div className="errorpage">

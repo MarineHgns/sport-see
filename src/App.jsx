@@ -7,6 +7,11 @@ import "../src/css/app.css"
 import Dashboard from "./pages/dashboard"
 
 
+/**
+ * The App function returns a div with a Header (horizontal navbar), Navbar (vertical navbar), and Routes (users, error)
+ * @returns The return statement is returning the JSX code.
+ */
+
 function App() {
 
   return (

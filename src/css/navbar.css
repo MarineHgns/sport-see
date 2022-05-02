@@ -46,3 +46,10 @@
 .icon-boxes {
     padding-top: 9em;
 }
+
+
+@media screen and (max-width: 1200px) {
+    .navbar-vertical p {
+        font-size: 0.5em;
+    }
+}

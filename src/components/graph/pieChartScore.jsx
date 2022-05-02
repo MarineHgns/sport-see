@@ -2,7 +2,13 @@ import React from "react";
 import { PieChart, Pie, Cell, Legend } from "recharts";
 import { useEffect, useState } from "react";
 import "../../css/pieChartScore.css"
+import PropTypes from "prop-types"
 
+/**
+ * Using a useEffect hook to set the state of todayScore to the data to display in the
+ * pieChart.
+ * @returns The pieChart component.
+ */
 function PieChartScore({datas}) {
     const [todayScore, setTodayScore] = useState(0);
     const COLORS = ['#FF0000', '#FFFFFF'];
@@ -17,6 +23,9 @@ function PieChartScore({datas}) {
         {total: Number(todayScore)},
         {total: 100 - Number(todayScore)}]
 
+/**
+ * Function that customizes the Legend component with the todayScore value.
+ */
   function CustomLegend({ payload }) {
     if (payload && payload.length) {
       return (
@@ -49,3 +58,12 @@ function PieChartScore({datas}) {
   };
 
 export default PieChartScore
+
+
+PieChartScore.propTypes = {
+  datas: PropTypes.shape({
+    user: PropTypes.shape({
+      todayScore: PropTypes.number.isRequired
+    })
+  })
+}

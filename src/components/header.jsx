@@ -2,6 +2,10 @@ import logo from '../assets/logo.png'
 import { Link } from "react-router-dom"
 import "../css/header.css"
 
+/**
+ * @returns an horizontal navbar with links.
+ */
+
 function Header() {
   return (
     <div className='header'>
