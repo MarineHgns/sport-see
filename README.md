@@ -60,7 +60,7 @@ yarn dev
 
 1. Clone this repository :
 
-`git clone https://github.com/WARDI-Kamal/WARDI-Kamal_12_16022022.git`
+`git clone https://github.com/MarineHgns/sport-see.git`
 
 2. Install dependencies:
 
