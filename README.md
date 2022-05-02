@@ -1,70 +1,81 @@
-# Getting Started with Create React App
+<p align="center">
+  <img src="/src/assets/logo.png" width="500px"alt="logo"/>
+</p>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+---
+[![](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E)](/)
+[![](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://fr.reactjs.org/)
+[![](https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white)](https://reactrouter.com/)
+[![](https://img.shields.io/badge/GIT-E44C30?style=for-the-badge&logo=git&logoColor=white)](https://git-scm.com)
+[![](https://img.shields.io/badge/Visual_Studio_Code-0078D4?style=for-the-badge&logo=visual%20studio%20code&logoColor=white)](https://code.visualstudio.com/)
+[![](https://img.shields.io/badge/eslint-3A33D1?style=for-the-badge&logo=eslint&logoColor=white)](https://eslint.org/)
+[![](https://img.shields.io/badge/prettier-1A2C34?style=for-the-badge&logo=prettier&logoColor=F7BA3E)](https://prettier.io/)
+---
+  
 
-## Available Scripts
+# SportSee
+An app to manage sports statistics.
+Created with React App and Recharts
 
-In the project directory, you can run:
 
-### `npm start`
+### Prerequisites
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- [NodeJS](https://nodejs.org/en/) v12.22.12
+- [yarn](https://yarnpkg.com/) v1.22.17 (or npm)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Dependencies
 
-### `npm test`
+- [React](https://fr.reactjs.org/) v18.0.0
+- [React-dom](https://www.npmjs.com/package/react-dom) v18.0.0
+- [React-router-dom](https://v5.reactrouter.com/web/guides/quick-start) v6.3.0
+- [Recharts](https://recharts.org/en-US/) v2.1.9
+- [Prettier](https://prettier.io/) v2.6.0
+- [Babel](https://babeljs.io/docs/en/) v7.17.2
+- [EsLint](https://eslint.org/) v8.9.0
+- [Axios](https://axios-http.com/) v0.26.1
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 1 | Back-end
 
-### `npm run build`
+1. Download or clone the back-end's repository :
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```sh
+git clone https://github.com/OpenClassrooms-Student-Center/P9-front-end-dashboard.git
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+2. Install dependencies :
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```sh
+# Yarn
+yarn install
+```
 
-### `npm run eject`
+3. Launch back-end on port 3000 (default port) :
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```sh
+# Yarn
+yarn dev
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### 2 | Front-end
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+1. Clone this repository :
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+`git clone https://github.com/WARDI-Kamal/WARDI-Kamal_12_16022022.git`
 
-## Learn More
+2. Install dependencies:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```sh
+# Yarn
+yarn install
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+3. Launch dev server on port 3000 :
 
-### Code Splitting
+```sh
+# Yarn
+yarn dev
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+4. Front-end is now rendered at URL `http://localhost:3001` and you can navigate on the site with backend data or mocked data (like you want).
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+You can also skip the backend part and launch the project directly with the frontend part (mocked data only).
