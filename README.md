@@ -23,6 +23,16 @@ Created with React App and Recharts
 - [NodeJS](https://nodejs.org/en/) v12.22.12
 - [yarn](https://yarnpkg.com/) v1.22.17 (or npm)
 
+
+### Launch JsDoc
+```sh
+- run the project with the backend or with the mocked datas
+```
+```sh
+- npm run doc
+```
+JsDoc is now rendered at URL `http://localhost:5500`
+
 ### Dependencies
 
 - [React](https://fr.reactjs.org/) v18.0.0
@@ -33,6 +43,7 @@ Created with React App and Recharts
 - [Babel](https://babeljs.io/docs/en/) v7.17.2
 - [EsLint](https://eslint.org/) v8.9.0
 - [Axios](https://axios-http.com/) v0.26.1
+- [JSDoc](https://jsdoc.app/) v3.6.10
 
 ### 1 | Back-end
 
