@@ -6,7 +6,13 @@ import PropTypes from "prop-types"
 /**
  * Using a useEffect hook to set the state of activityData to the data to display in the
  * BarChart.
- * @returns The BarChart component.
+ * @returns The BarChart component
+ * @param {object} datas
+ * @param {object} activityData
+ * @param {object} data
+ * @param {object} payload
+ * @component ActivityBarChart
+ * 
  */
 function ActivityBarChart ({datas}) {
   const [activityData, setActivityData] = useState([]);
@@ -27,6 +33,9 @@ function ActivityBarChart ({datas}) {
 
   /**
    * Function that customizes the tooltip component with the kg and cal value.
+   * @param {Boolean} active if active
+   * @param {Array} payload [0] (Number) sessionLength value
+   * @returns {reactElement} Component if active
    */
   
   function CustomTooltip({ active, payload }) {

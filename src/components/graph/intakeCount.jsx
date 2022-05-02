@@ -7,7 +7,13 @@ import PropTypes from "prop-types"
 
 /**
  * Function that return 4 boxes with icons and nutritional informations (cal, protein, lipid and carb).
- * @returns the IntakeCount component.
+ * @returns {reactElement} the IntakeCount component
+ * @param {object} datas
+ * @property {!Number} datas.calorieCount - number of calorie
+ * @property {!Number} datas.proteinCount - number of protein
+ * @property {!Number} datas.carbohydrateCount - number of carbohydrate
+ * @property {!Number} datas.lipidCount - number of lipid
+ * @component IntakeCount
  */
 function IntakeCount({datas}) {
     return (

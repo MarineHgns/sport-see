@@ -6,7 +6,15 @@ import PropTypes from "prop-types"
 /**
  * Using a useEffect hook to set the state of averageTime to the data to display in the
  * LineChart.
- * @returns The LineChart component.
+ * @returns The LineChart component
+ * @param {object} datas
+ * @param {string} initialDayWeek
+ * @param {object} averageTime
+ * @param {object} data
+ * @param {object} payload
+ * @param {object} props
+ * @component SessionsLineChart
+ * 
  */
 function SessionsLineChart ({datas}) {
     const initialDayWeek = ["L", "M", "M", "J", "V", "S", "D"];
@@ -27,6 +35,9 @@ function SessionsLineChart ({datas}) {
 
   /**
    * Function that customizes the tooltip component with the sessionlength value.
+   * @param {Boolean} active if active
+   * @param {Array} payload [0] (Number) sessionLength value
+   * @returns {reactElement} Component if active
    */
 
   function CustomTooltip({ active, payload }){
@@ -41,6 +52,8 @@ function SessionsLineChart ({datas}) {
 
   /**
    * Function that customizes the cursor background component.
+   * @param {object} props
+   * @returns {reactElement} if active
    */
 
   function CustomCursor(props) {
@@ -49,7 +62,7 @@ function SessionsLineChart ({datas}) {
         const { x, y } = points[0];
         return (
             <Rectangle
-                fill={"#e60000b8"}
+                fill={"#00000033"}
                 x={x}
                 y={y}
                 width={width}
@@ -60,14 +73,12 @@ function SessionsLineChart ({datas}) {
   }
 
 
-
     return (
         <div className='line-chart-section'>
           <h2 className='title-line-chart'>Durée moyenne des sessions</h2>
 
-          <LineChart width={260} height={189} data={data} 
+          <LineChart width={260} height={280} data={data} 
             margin={{
-              top: -55,
               right: 5,
               left: 5,
               bottom: 5,
@@ -77,7 +88,7 @@ function SessionsLineChart ({datas}) {
           <XAxis dataKey="initialDayWeek" tickLine={false} axisLine={false} tickMargin={0} stroke='rgba(255, 255, 255, 0.5)'
             padding={{ left: 5, right: 5}} fontSize={14} fontWeight={400}/>
           <YAxis hide="true" domain={['dataMin-10', 'dataMax+20']}/>
-          <Tooltip content={<CustomTooltip />} cursor={<CustomCursor /> } />
+          <Tooltip content={<CustomTooltip />} cursor={<CustomCursor />}/>
           <Line type="monotone" dataKey="sessionLength" stroke='rgba(255, 255, 255, 0.6)' strokeWidth={1.5} dot={false} 
             activeDot={{
               stroke: "rgba(255, 255, 255, 0.2)",
@@ -89,7 +100,6 @@ function SessionsLineChart ({datas}) {
         </div>
     );
   };
-
   
   export default SessionsLineChart;
 

@@ -1,7 +1,11 @@
 import PropTypes from "prop-types"
+
 /**
  * Display a personalized welcome message with the first name of the user.
- * @returns a div.
+ * @returns a div
+ * @param {object} datas
+ * @param {String} firstName
+ * @component Welcome
  */
 
 function Welcome({datas}) {

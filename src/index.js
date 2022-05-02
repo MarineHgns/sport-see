@@ -4,6 +4,11 @@ import App from "./App";
 import { createRoot } from "react-dom/client";
 import reportWebVitals from "./reportWebVitals";
 
+/**
+ * @file JSDOC du projet SPORTSEE
+ * @author Huygens Marine
+ */
+
 /* This is the code that is used to render the app to the DOM. */
 const rootElement = document.getElementById("root");
 const root = createRoot(rootElement);

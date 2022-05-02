@@ -7,7 +7,14 @@ import PropTypes from "prop-types"
 /**
  * Using a useEffect hook to set the state of todayScore to the data to display in the
  * pieChart.
- * @returns The pieChart component.
+ * @returns The pieChart component
+ * @param {object} datas
+ * @param {string} COLORS
+ * @param {object} todayScore
+ * @param {object} data
+ * @param {object} payload
+ * @component PieChartScore
+ * 
  */
 function PieChartScore({datas}) {
     const [todayScore, setTodayScore] = useState(0);
@@ -25,7 +32,10 @@ function PieChartScore({datas}) {
 
 /**
  * Function that customizes the Legend component with the todayScore value.
+ * @param {Array} payload [0] (Number) score value
+ * @returns {reactElement} if active
  */
+
   function CustomLegend({ payload }) {
     if (payload && payload.length) {
       return (

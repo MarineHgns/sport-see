@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: components/graph/activityBarChart.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: components/graph/activityBarChart.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip} from 'recharts';
+import React, { useEffect, useState } from "react";
+import "../../css/activityBarChart.css"
+import PropTypes from "prop-types"
+
+/**
+ * Using a useEffect hook to set the state of activityData to the data to display in the
+ * BarChart.
+ * @returns The BarChart component
+ * @param {object} datas
+ * @param {object} activityData
+ * @param {object} data
+ * @param {object} payload
+ * 
+ */
+function ActivityBarChart ({datas}) {
+  const [activityData, setActivityData] = useState([]);
+  
+  useEffect(() => {
+    if (datas.activity?.sessions.length >= 1)  {
+      setActivityData(datas.activity?.sessions);
+    }
+  }, [datas]);
+
+    const data = activityData.map((element, index) => {
+      return {
+          day: index +1,
+          kg: element.kilogram,
+          cal: element.calories
+      };
+    });
+
+  /**
+   * Function that customizes the tooltip component with the kg and cal value.
+   */
+  
+  function CustomTooltip({ active, payload }) {
+    if (active &amp;&amp; payload ) {
+      return (
+        &lt;div className="custom-tooltip">
+          &lt;p className="value">{`${payload[0].value}kg`}&lt;/p>
+          &lt;p className="value">{`${payload[1].value}kcal`}&lt;/p>
+        &lt;/div>
+      );
+    }
+  };
+
+    return (
+      &lt;div className="activity-chart">
+          &lt;div className="activity-chart-title">
+              &lt;div className='act-title'>
+                &lt;div className="activity-chart-title-one">
+                    Activité quotidienne
+                &lt;/div>
+                &lt;div className="activity-chart-title-two">
+                    &lt;ul>
+                        &lt;li>&lt;span className="width-li black">•&lt;/span>&lt;span className="text-activity">Poids (kg)&lt;/span>&lt;/li>
+                        &lt;li>&lt;span className="width-li red">•&lt;/span>&lt;span className="text-activity">Calories brulées (kCal)&lt;/span>&lt;/li>
+                    &lt;/ul>
+                &lt;/div>
+              &lt;/div>
+          &lt;/div>
+
+         &lt;BarChart width={810} height={300} data={data} barCategoryGap={18} barGap={6} margin={{
+              top: 50,
+              right: 10,
+              left: 40,
+              bottom: 5,
+            }}>
+              
+          &lt;CartesianGrid strokeDasharray="2 2" vertical={false}/>
+          &lt;XAxis dataKey="day"  tickLine={false} tick={{ fontSize: 14, fontWeight: 500 }} dy={10}/>
+          &lt;YAxis yAxisId={"kg"} dataKey="kg" domain={["dataMin - 2", "dataMax + 2"]} tick={{ fontWeight: "500", fontSize: "14px" }} tickMargin={40} tickLine={false} orientation="right" axisLine={false}/>
+          &lt;YAxis yAxisId={"cal"}  hide={true}  domain={["dataMin - 100", "dataMax "]}  />
+          &lt;Tooltip content={&lt;CustomTooltip />} cursor={{ fill: "#e0e0e0", opacity:"0.7" }}/>
+          &lt;Bar yAxisId={"kg"} dataKey="kg" fill="#282D30" radius={[50, 50, 0, 0]} barSize={6}/>
+          &lt;Bar yAxisId={"cal"} dataKey="cal" fill="#E60000" radius={[50, 50, 0, 0]} barSize={6}/>
+        &lt;/BarChart>
+
+      &lt;/div>
+    );
+  };
+ 
+  export default ActivityBarChart;
+
+  ActivityBarChart.propTypes = {
+    datas: PropTypes.shape({
+      activity: PropTypes.shape({
+        sessions: PropTypes.any.isRequired,
+          day: PropTypes.string,
+          kg: PropTypes.number,
+          cal: PropTypes.number,
+      })
+    })
+  }</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#ActivityBarChart">ActivityBarChart</a></li><li><a href="global.html#apiCall">apiCall</a></li><li><a href="global.html#App">App</a></li><li><a href="global.html#Dashboard">Dashboard</a></li><li><a href="global.html#Error">Error</a></li><li><a href="global.html#Header">Header</a></li><li><a href="global.html#Home">Home</a></li><li><a href="global.html#IntakeCount">IntakeCount</a></li><li><a href="global.html#NavBar">NavBar</a></li><li><a href="global.html#PieChartScore">PieChartScore</a></li><li><a href="global.html#RadarChartPerf">RadarChartPerf</a></li><li><a href="global.html#SessionsLineChart">SessionsLineChart</a></li><li><a href="global.html#Welcome">Welcome</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.10</a> on Mon May 02 2022 18:37:34 GMT+0200 (GMT+02:00)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

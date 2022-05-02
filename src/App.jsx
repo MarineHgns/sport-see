@@ -8,8 +8,10 @@ import Dashboard from "./pages/dashboard"
 
 
 /**
- * The App function returns a div with a Header (horizontal navbar), Navbar (vertical navbar), and Routes (users, error)
- * @returns The return statement is returning the JSX code.
+ * The App function returns a div with the Header component (horizontal navbar), Navbar component (vertical navbar), 
+ *  and Routes (users profile, error page)
+ * @returns the router component.
+ * @returns {reactElement}
  */
 
 function App() {

@@ -7,6 +7,7 @@ import "../css/navbar.css"
 /**
  * The NavBar function returns a div with the content of the vertical navbar (icons).
  * @returns The NavBar component.
+ * @component NavBar
  */
 
 function NavBar() {

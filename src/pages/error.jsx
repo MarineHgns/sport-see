@@ -4,6 +4,7 @@ import "../css/error.css"
 /**
  * The Error function return the error page content and a Link to the home page.
  * @returns the error page content.
+ * @component Error
 **/
 
 function Error() {

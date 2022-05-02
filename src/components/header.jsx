@@ -4,6 +4,7 @@ import "../css/header.css"
 
 /**
  * @returns an horizontal navbar with links.
+ * @component Header
  */
 
 function Header() {

@@ -6,7 +6,12 @@ import PropTypes from "prop-types"
 /**
  * Using a useEffect hook to set the state of sessionPerf to the data to display in the
  * chart.
- * @returns The RadarChart component.
+ * @returns The RadarChart component
+ * @param {object} datas
+ * @param {string} categories
+ * @param {object} sessionPerf
+ * @param {object} data
+ * @component RadarChartPerf
  */
 function RadarChartPerf({ datas }) {
 const categories = ["Cardio" , "Energie" , "Endurance" , "Force" , "Vitesse" , "Intensité"];
