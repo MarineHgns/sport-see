@@ -29,17 +29,48 @@ li {
     padding-left: 1.4em;
 }
 
-.activity-chart-title {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+.radar {
+  width: 280px;
+  height: 280px;
+  margin: 0px auto;
+  border-radius: 5px;
+  background-color: rgb(40, 45, 48);
 }
 
-.act-title {
-    display: flex;
-    align-items: center;
+.graph {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 1.5fr repeat(3, 1fr);
+    grid-template-areas:
+        "activity-chart activity-chart activity-chart intake-box"
+        "activity-chart activity-chart activity-chart intake-box"
+        "activity-chart activity-chart activity-chart intake-box"
+        "activity-chart activity-chart activity-chart intake-box"
+        "graph-bottom graph-bottom graph-bottom intake-box"
+        "graph-bottom graph-bottom graph-bottom intake-box"
+        "graph-bottom graph-bottom graph-bottom intake-box"
+        "graph-bottom graph-bottom graph-bottom intake-box";
+    grid-area: ch / ch / ch / ch;
+    gap: 2rem;
 }
 
-.activity-chart-title-two ul {
+.graph-bottom {
+    grid-area: graph-bottom / graph-bottom / graph-bottom / graph-bottom;
     display: flex;
+    align-items: flex-end;
+}
+
+@media screen and (max-width: 1270px) {
+ .graph-bottom {
+    -webkit-box-align: center;
+    align-items: center;   
+    width: 900px;
+    max-width: 95%;
+}
+
+.graph {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem; 
+}
 }

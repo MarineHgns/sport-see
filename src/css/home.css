@@ -1,7 +1,10 @@
 .profile-page{
     position: relative;
     top: 3em;
-    left: 7.5em;
+    left: 5%;
+    margin: auto;
+    width: 100%;
+    max-width: 1200px;
 }
 
 .home-user {
@@ -15,8 +18,12 @@
 .welcome-user{
     font-size: 1em;
     font-weight: 500;
-    margin-left: 3em;
     text-align: left;
+    display: grid; 
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr; 
+    gap: 0px 0px;
+    grid-area: welcome-user; 
 }
 .welcome-user p{
   text-align: left;
@@ -73,4 +80,15 @@
   .button-27:active {
     box-shadow: none;
     transform: translateY(0);
+  }
+
+  @media screen and (max-width: 1200px) {
+    .profile-page {
+    left: 8%;
+    max-width: 900px;
+    }
+
+    .welcome-user {
+      width: 900px;
+      }
   }

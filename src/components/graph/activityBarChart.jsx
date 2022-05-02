@@ -1,26 +1,25 @@
-
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip} from 'recharts';
-import "../../css/graph.css"
 import React, { useEffect, useState } from "react";
 import "../../css/activityBarChart.css"
 
 function ActivityBarChart ({datas}) {
   const [activityData, setActivityData] = useState([]);
+  
   useEffect(() => {
     if (datas.activity?.sessions.length >= 1)  {
       setActivityData(datas.activity?.sessions);
     }
   }, [datas]);
 
-    const data = activityData.map((item, index) => {
+    const data = activityData.map((element, index) => {
       return {
           day: index +1,
-          kg: item.kilogram,
-          cal: item.calories
+          kg: element.kilogram,
+          cal: element.calories
       };
     });
 
-  const CustomTooltip = ({ active, payload }) => {
+  function CustomTooltip({ active, payload }) {
     if (active && payload ) {
       return (
         <div className="custom-tooltip">
@@ -29,8 +28,6 @@ function ActivityBarChart ({datas}) {
         </div>
       );
     }
-  
-    return null;
   };
 
     return (
@@ -49,45 +46,23 @@ function ActivityBarChart ({datas}) {
               </div>
           </div>
 
-         <BarChart width={600} height={300} data={data} barCategoryGap={20} barGap={7} margin={{
+         <BarChart width={810} height={300} data={data} barCategoryGap={18} barGap={6} margin={{
               top: 50,
               right: 10,
               left: 40,
               bottom: 5,
             }}>
-          <CartesianGrid strokeDasharray="3 3" vertical={false}/>
-          <XAxis dataKey="day"  tickLine={false} tick={{ fontSize: 14 }} dy={10}/>
-          <YAxis orientation="right" interval="number" allowDecimals={false} tickLine={false} 
-            axisLine={false} tick={{ fontSize: 14 }}/>
-          <YAxis dataKey="cal" hide={true} />
+          <CartesianGrid strokeDasharray="2 2" vertical={false}/>
+          <XAxis dataKey="day"  tickLine={false} tick={{ fontSize: 14, fontWeight: 500 }} dy={10}/>
+          <YAxis yAxisId={"kg"} dataKey="kg" domain={["dataMin - 2", "dataMax + 2"]} tick={{ fontWeight: "500", fontSize: "14px" }} tickMargin={40} tickLine={false} orientation="right" axisLine={false}/>
+          <YAxis yAxisId={"cal"}  hide={true}  domain={["dataMin - 100", "dataMax "]}  />
           <Tooltip content={<CustomTooltip />} cursor={{ fill: "#e0e0e0", opacity:"0.7" }}/>
-          <Bar dataKey="kg" fill="#282D30" radius={[50, 50, 0, 0]} barSize={6}  />
-          <Bar dataKey="cal" fill="#E60000" radius={[50, 50, 0, 0]} barSize={6}  />
+          <Bar yAxisId={"kg"} dataKey="kg" fill="#282D30" radius={[50, 50, 0, 0]} barSize={6}/>
+          <Bar yAxisId={"cal"} dataKey="cal" fill="#E60000" radius={[50, 50, 0, 0]} barSize={6}/>
         </BarChart>
 
       </div>
     );
   };
-
-
-
-  
+ 
   export default ActivityBarChart;
-
-  // let kilogramsArray = [];
-  // let caloriesArray = [];
-  // let minYKilo = 0;
-  // let maxYKilo = 0;
-  // let minYCal = 0;
-  // let maxYCal = 0;
-
-
-// domain={[minYKilo, maxYKilo]}
-// domain={[minYCal, maxYCal]}     
-// kilogramsArray = data.map((elt) => elt.kg);
-//     minYKilo = Math.min(...kilogramsArray) - 1;
-//     maxYKilo = Math.max(...kilogramsArray) + 1;
-
-//     caloriesArray = data.map((elt) => elt.cal);
-//     minYCal = Math.min(...caloriesArray) - 10;
-//     maxYCal = Math.max(...caloriesArray) + 10;

@@ -1,72 +1,80 @@
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { LineChart, Line, XAxis, YAxis, Tooltip, Rectangle } from 'recharts';
+import React, { useEffect, useState} from "react";
 import "../../css/lineChartSessions.css"
-import React, { useEffect, useState, useRef } from "react";
-
 
 function SessionsLineChart ({datas}) {
-    console.log(datas, datas.session?.sessions);
-    const initialDay = ["L", "M", "M", "J", "V", "S", "D"];
+    const initialDayWeek = ["L", "M", "M", "J", "V", "S", "D"];
     const [averageTime, setAverageTime] = useState([]);
-    const chartRef = useRef(null);
-  
-    // Get data from props
     useEffect(() => {
       if (datas.session?.sessions) {
-          console.log(datas.session?.sessions);
-          console.log("ok");
         setAverageTime(datas.session?.sessions);
-    
       }
     }, [datas]);
-  console.log(averageTime);
-    // array of objects with kind and value
-    const data = averageTime.map((item) => {
+
+
+    const data = averageTime.map((element) => {
       return {
-        initialDay: initialDay[item.day - 1],
-        sessionLength: item.sessionLength,
+        initialDayWeek: initialDayWeek[element.day - 1],
+        sessionLength: element.sessionLength,
       };
     });
 
-    console.log(datas);
-    console.log(data);
-
-
-
-  const CustomTooltip = ({ active, payload }) => {
-    if (active && payload ) {
+  function CustomTooltip({ active, payload }){
+    if (active && payload) {
       return (
-        <div className="custom-tooltip">
-          <p className="value">{`${payload[0].value} min`}</p>
+        <div className="custom-tooltip white">
+          <p className="value black">{`${payload[0].value} min`}</p>
         </div>
       );
     }
-  
-    return null;
   };
+
+  function CustomCursor(props) {
+    if (props) {
+        const { points, width, height } = props;
+        const { x, y } = points[0];
+        return (
+            <Rectangle
+                fill={"#e60000b8"}
+                x={x}
+                y={y}
+                width={width}
+                height={height * 2}
+            /> 
+        );
+    }
+  }
+
+
 
     return (
-        <LineChart
-          width={500}
-          height={300}
-          data={data}
-          margin={{
-            top: 5,
-            right: 30,
-            left: 20,
-            bottom: 5,
-          }}
-        >
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="initialDay" />
-          <YAxis />
-          <Tooltip content={<CustomTooltip />} cursor={{ fill: "#e0e0e0", opacity:"0.7" }}/>
-          <Legend />
-          <Line type="monotone" dataKey="sessionLength" stroke="#8884d8" activeDot={{ r: 8 }} />
-        </LineChart>
+        <div className='line-chart-section'>
+          <h2 className='title-line-chart'>Durée moyenne des sessions</h2>
+
+          <LineChart width={260} height={200} data={data} 
+            margin={{
+              top: -55,
+              right: 5,
+              left: 5,
+              bottom: 5,
+            }}
+          >
+
+          <XAxis dataKey="initialDayWeek" tickLine={false} axisLine={false} tickMargin={0} stroke='rgba(255, 255, 255, 0.5)'
+            padding={{ left: 5, right: 5}} fontSize={14} fontWeight={400}/>
+          <YAxis hide="true" domain={['dataMin-10', 'dataMax+20']}/>
+          <Tooltip content={<CustomTooltip />} cursor={<CustomCursor /> } />
+          <Line type="monotone" dataKey="sessionLength" stroke='rgba(255, 255, 255, 0.6)' strokeWidth={1.5} dot={false} 
+            activeDot={{
+              stroke: "rgba(255, 255, 255, 0.2)",
+              strokeWidth: 5,
+              r: 5,
+            }}/>
+          </LineChart>
+
+        </div>
     );
   };
-
-
 
   
   export default SessionsLineChart;

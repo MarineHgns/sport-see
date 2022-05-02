@@ -1,10 +1,9 @@
 .radialprogress {
-    width: 258px;
-    height: 263px;
+    height: 280px;
+    width: 250px;
     border-radius: 5px;
     background-color: #FBFBFB;
-    position: relative;
-    padding: 25px
+    grid-area: radialprogress;
 }
 
 .container-legend-score {
@@ -12,9 +11,9 @@
     align-items: center;
     flex-direction: column;
     line-height: 0px;
-    margin-left: -0.4em;
+    margin-left: -1.8em;
     position: relative;
-    top: -1.4em;
+    top: -2.4em;
 }
 
 .score-result {
@@ -29,4 +28,8 @@
 
 .recharts-sector {
     background-color: white;
+}
+
+.score {
+    padding-left: 1em;
 }

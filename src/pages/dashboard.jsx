@@ -52,12 +52,14 @@ if (noDatas === true) {
         <div className="profile-page">
             <Welcome datas={datas}/>
             <div className="graph">
-                <IntakeCount datas={datas}/>
-                <RadarGraph datas={datas}/>
                 <ActivityBarChart datas={datas}/>
-                <PieChartScore datas={datas}/>
-                <SessionsLineChart datas={datas}/>
-            </div> 
+                <IntakeCount datas={datas}/>
+                <div className="graph-bottom">
+                    <SessionsLineChart datas={datas}/>
+                    <RadarGraph datas={datas}/>
+                    <PieChartScore datas={datas}/>       
+                </div>
+            </div>
         </div>
     );
 }

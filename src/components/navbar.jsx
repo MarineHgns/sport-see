@@ -7,7 +7,7 @@ import "../css/navbar.css"
 function NavBar() {
     return (
         <div className="navbar-vertical">
-            <div className="icon-boxes">
+            {/* <div className="icon-boxes">
                 <div className='iconcontainer'>
                     <img src={yoga} alt="yoga" />
                 </div>
@@ -21,7 +21,7 @@ function NavBar() {
                     <img src={strength} alt="strength" />
                 </div>
             </div>
-            <p>Copyright, SportSee 2020</p>
+            <p>Copyright, SportSee 2020</p> */}
         </div>
     )
 }

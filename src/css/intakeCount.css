@@ -1,12 +1,11 @@
 .box-icon {
+    display: flex;
+    border-radius: 5px;
     background: rgba(251, 251, 251, 1);
     padding: 1em;
-    width: 9.4em;
-    border-radius: 5px;
-    display: flex;
+    width: 10em;
     align-items: flex-end;
     justify-content: space-between;
-    margin-bottom: 1.4em;
     
 }
 
@@ -28,5 +27,25 @@
     margin-bottom: 0.8em;
 }
 .intake-box {
-    margin-left: 2em;
+    grid-area: intake-box / intake-box / intake-box / intake-box;
+    display: flex;
+    flex-direction: column;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+}
+
+
+@media screen and (max-width: 1270px) {
+    .intake-box {
+    flex-direction: row;
+    gap: 1rem;
+    width: 900px;
+    max-width: 95%;
+    }  
+
+    .box-info {
+        margin: 0em 1em;
+        font-size: 0.8emem;
+        font-weight: 700;
+    }
 }
