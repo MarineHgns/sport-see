@@ -25,8 +25,11 @@ function App() {
             <Route exact path="/" element={<Home />}/>
             <Route path="/sport-see" element={<Home />}/>
             <Route path="/user/:id" element={<Dashboard />} />
+            <Route path="/sport-see/user/:id" element={<Dashboard />} />
             <Route path="/*" element={<Error />}/>
+            <Route path="sport-see/*" element={<Error />}/>
             <Route path="/user/*" element={<Error />}/>
+            <Route path="/sport-see/user/*" element={<Error />}/>
           </Routes>
 
       </div>
