@@ -29,7 +29,7 @@ Created with React App and Recharts
 - run the project with the backend or with the mocked datas
 ```
 ```sh
-- npm run doc
+- docs > index.html --> Open with Live Server or Open with default server
 ```
 JsDoc is now rendered at URL `http://localhost:5500`
 
