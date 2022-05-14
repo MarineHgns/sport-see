@@ -64,13 +64,13 @@ li {
  .graph-bottom {
     -webkit-box-align: center;
     align-items: center;   
-    width: 900px;
+    width: 880px;
     max-width: 95%;
 }
 
 .graph {
     display: flex;
     flex-direction: column;
-    gap: 1rem; 
+    gap: 1rem;
 }
 }
